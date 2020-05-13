@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBolt } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
+import Form from './components/Form';
+import Weather from './components/Weather';
 import "./index.css";
 
 const Wrapper = styled.div`
@@ -12,11 +14,13 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 0.25em 1em;
-  background: rgba(3, 169, 24, 0.5) ;
+  background: rgba(107, 104, 101, 0.5);
+  box-shadow: 12px 12px 2px 1px rgba(255, 255, 255, .6);
+  
   @media (min-width : 800px){
-    background: rgba(3, 100, 50, 0.7) ;
     height: 70%;
-  width: 70%;
+    width: 70%;
+    border-radius: 30px;
   }
   `;
 
@@ -27,8 +31,9 @@ class App extends Component {
     return (
       <div className="App">
         <Wrapper>
-          
-            <FontAwesomeIcon icon={faBolt} color="blue" />
+          <Form/>
+          <Weather/>
+          <FontAwesomeIcon icon={faBolt} color="blue" />
         </Wrapper>
       </div>
     );
