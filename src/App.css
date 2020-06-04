@@ -2,37 +2,80 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+input {
+  background-color: transparent!important;
+  border: 0;
+  border-bottom: solid 1px #f16051;
+  width: 30%;
+  padding-bottom: 4px;
+  font-weight: lighter;
+  margin-bottom: 30px;
+  margin-right: 20px;
+  font-size: 25px;
+  outline: none;
+  color: #FFF;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+input::placeholder {
+  color:rgba(255, 255, 255, 0.61);
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  
+.wrapper{
+  height: 100%;
+  width: 100%;
   display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 0.25em 1em;
+  background: rgba(107, 104, 101, 0.5);
+  box-shadow: 12px 12px 2px 1px rgba(0,0,0, .6);
+}
+.location{
+  text-align: center;
+  overflow: hidden;
+}
+.location .name{
+  color: #FFF;
+  font-size: 30px;
+  font-weight: 500;
+  text-align: center;
+  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+ 
+}
+.location .date, .weather{
+  color: #FFF;
+  font-size: 20px;
+  font-weight: 300;
+  font-style: italic;
+  text-align: center;
+  text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
+}
+.location .temp{
+  color: #FFF;
+  font-size: 80px;
+  font-weight: 900;
+  text-shadow: 3px 6px rgba(212, 60, 14, 0.5);
+  text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (min-width : 800px){
+  .wrapper{
+    height: 70%;
+    width: 70%;
+    border-radius: 30px;
   }
-  to {
-    transform: rotate(360deg);
+  input {
+    font-size: 30px;
   }
+  .location .date, .weather{
+    font-size: 30px;
+  }
+  .location .temp{
+    font-size: 102px;
+  }
+  .location .name{
+    font-size: 50px;
+  }
+    
 }

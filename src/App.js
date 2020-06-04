@@ -1,40 +1,55 @@
 import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBolt } from "@fortawesome/free-solid-svg-icons";
-import styled from "styled-components";
 import Form from './components/Form';
 import Weather from './components/Weather';
 import "./index.css";
+import './App.css';
 
-const Wrapper = styled.div`
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  padding: 0.25em 1em;
-  background: rgba(107, 104, 101, 0.5);
-  box-shadow: 12px 12px 2px 1px rgba(255, 255, 255, .6);
-  
-  @media (min-width : 800px){
-    height: 70%;
-    width: 70%;
-    border-radius: 30px;
-  }
-  `;
-
+const apiKey = "ecf370ab2da609a3e3da750cae0d3019";
 
 
 class App extends Component {
+  state={
+    city: undefined,
+    country: undefined,
+    temp:undefined,
+    weather:undefined,
+    error: undefined,
+    loading: false
+  }
+  getWeather = async(e) => {
+    e.preventDefault();
+    const city = e.target.city.value;
+    const country = e.target.country.value;
+    const apiCall = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}&units=metric`);
+    const data = await apiCall.json();
+    console.log(data);
+   if(city && country){
+    this.setState({
+      city : data.name,
+      country : data.sys.country,
+      temp : data.main.temp,
+      weather : data.weather[0].description,
+      error: ''
+    });
+   }else{
+    this.setState({
+      city : undefined,
+      country : undefined,
+      temp : undefined,
+      weather : undefined,
+      error: 'Entrez une valeur'
+      
+    });
+   }
+  }
+   
   render() {
     return (
       <div className="App">
-        <Wrapper>
-          <Form/>
+        <div className="wrapper">
+          <Form getWeather={this.getWeather}/>
           <Weather/>
-          <FontAwesomeIcon icon={faBolt} color="blue" />
-        </Wrapper>
+        </div>
       </div>
     );
   }
